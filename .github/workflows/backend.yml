@@ -1,4 +1,4 @@
-name: CI Spring Boot Docker
+name: Backend
  
 on:
   push:
