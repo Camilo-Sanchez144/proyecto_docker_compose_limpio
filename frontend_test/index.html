@@ -168,7 +168,7 @@
         }
         function parimpar(){
             const numero = document.getElementById("numero").value;
-            etch(`${API_URL}/parimpar?numero=${numero}`)
+            fetch(`${API_URL}/parimpar?numero=${numero}`)
                 .then(response => response.text())
                 .then(data => {
                     document.getElementById("resultado").innerText = "resultado: " + data;
