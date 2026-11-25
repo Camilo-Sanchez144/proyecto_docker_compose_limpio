@@ -20,7 +20,7 @@ public class testController {
 
 	@GetMapping ("/test_cd")
 		public String cd() {
-		return "Hello from Continuous Deployment";
+		return "Hello from Continuous Deployment!";
 	}
 	
 	@GetMapping(value="/saludar")
