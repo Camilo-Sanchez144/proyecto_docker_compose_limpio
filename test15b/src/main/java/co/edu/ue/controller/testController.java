@@ -28,6 +28,16 @@ public class testController {
 		return "Hola estudiantes de la 15A y 15B";
 	}
 	
+	@GetMapping (value="parimpar")
+	public String parimpar(@RequestParam int numero){
+		if(numero %2==0){
+			return "Es par";
+		}
+		else{
+			return "Es impar";
+		}
+	}
+
 	@GetMapping(value="/sumar")
     public int sumar(
             @RequestParam int numero1,
