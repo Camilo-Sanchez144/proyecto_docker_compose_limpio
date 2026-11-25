@@ -3,24 +3,151 @@
 <head>
     <meta charset="UTF-8">
     <title>Frontend Spring Boot</title>
+    <style>
+        :root {
+            --naranja: #e98d4c;
+            --naranja-oscuro: #EA580C;
+            --naranja-suave: #FFF3E8;
+            --blanco: #FFFFFF;
+            --texto: #3B2A1E;
+            --borde: #FFD9B8;
+        }
+
+        * { box-sizing: border-box; }
+
+        body {
+            margin: 0;
+            font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+            color: var(--texto);
+            background: var(--blanco);
+            line-height: 1.5;
+        }
+
+        header {
+            background: var(--naranja);
+            color: var(--blanco);
+            padding: 2rem 1.5rem;
+        }
+
+        header h1 {
+            max-width: 640px;
+            margin: 0 auto;
+            font-size: 1.5rem;
+            font-weight: 600;
+            letter-spacing: -0.01em;
+        }
+
+        main {
+            max-width: 640px;
+            margin: 0 auto;
+            padding: 1.5rem;
+        }
+
+        section {
+            padding: 1.5rem 0;
+            border-bottom: 1px solid var(--borde);
+        }
+
+        section:last-child { border-bottom: none; }
+
+        h2 {
+            margin: 0 0 1rem;
+            font-size: 1.05rem;
+            font-weight: 600;
+            color: var(--naranja-oscuro);
+        }
+
+        .fila {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.75rem;
+        }
+
+        input {
+            flex: 1 1 120px;
+            padding: 0.65rem 0.85rem;
+            font: inherit;
+            color: var(--texto);
+            background: var(--blanco);
+            border: 1px solid var(--borde);
+            border-radius: 8px;
+        }
+
+        input:focus,
+        button:focus-visible {
+            outline: 2px solid var(--naranja);
+            outline-offset: 2px;
+        }
+
+        button {
+            padding: 0.65rem 1.25rem;
+            font: inherit;
+            font-weight: 500;
+            color: var(--blanco);
+            background: var(--naranja);
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background 0.15s;
+        }
+
+        button:hover { background: var(--naranja-oscuro); }
+
+        .resultado {
+            min-height: 1.5rem;
+            margin: 1rem 0 0;
+            font-weight: 500;
+        }
+
+        .lista {
+            margin: 1rem 0 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        .lista li {
+            padding: 0.6rem 0.85rem;
+            margin-bottom: 0.5rem;
+            font-family: ui-monospace, Consolas, monospace;
+            font-size: 0.85rem;
+            background: var(--naranja-suave);
+            border-left: 3px solid var(--naranja);
+            border-radius: 4px;
+            overflow-wrap: anywhere;
+        }
+
+        .error { color: #B91C1C; }
+    </style>
 </head>
 <body>
 
-    <h1>Consumo API Spring Boot v2 </h1>
+     <header>
+        <h1>Consumo API Spring Boot v2</h1>
+    </header>
 
-    <h2>Saludar</h2>
-    <button onclick="saludar()">Probar /saludar</button>
-    <p id="resultadoSaludo"></p>
+    <main>
+        <section>
+            <h2>Saludar</h2>
+            <button onclick="saludar()">Probar /saludar</button>
+            <p id="resultadoSaludo" class="resultado"></p>
+        </section>
 
-    <h2>Sumar dos números</h2>
-    <input type="number" id="numero1" placeholder="Número 1">
-    <input type="number" id="numero2" placeholder="Número 2">
-    <button onclick="sumar()">Sumar</button>
-    <p id="resultadoSuma"></p>
+        <section>
+            <h2>Sumar dos números</h2>
+            <div class="fila">
+                <input type="number" id="numero1" placeholder="Número 1">
+                <input type="number" id="numero2" placeholder="Número 2">
+                <button onclick="sumar()">Sumar</button>
+            </div>
+            <p id="resultadoSuma" class="resultado"></p>
+        </section>
 
-    <h2>Lista desde base de datos</h2>
-    <button onclick="listar()">Consultar /lista</button>
-    <ul id="listaDatos"></ul>
+        <section>
+            <h2>Lista desde base de datos</h2>
+            <button onclick="listar()">Consultar /lista</button>
+            <ul id="listaDatos" class="lista"></ul>
+        </section>
+    </main>
 
     <script>
         const API_URL = "/api";
